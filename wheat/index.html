@@ -27,16 +27,16 @@
                 <div class="dropdown">
                     <a href="/about/" class="nav-link dropbtn">About <i class="fas fa-chevron-down"></i></a>
                     <div class="dropdown-content">
-                        <a href="/about/#company">Company Profile</a>
-                        <a href="/about/#founder">Founder</a>
-                        <a href="/about/#team">Our Team</a>
+                        <a href="/about/#company" onclick="event.stopPropagation();">Company Profile</a>
+                        <a href="/about/#founder" onclick="event.stopPropagation();">Founder</a>
+                        <a href="/about/#team" onclick="event.stopPropagation();">Our Team</a>
                     </div>
                 </div>
                 <div class="dropdown">
                     <a href="/products/" class="nav-link dropbtn active">Products <i class="fas fa-chevron-down"></i></a>
                     <div class="dropdown-content">
-                        <a href="/spices/">Spices</a>
-                        <a href="/agriculture/">Agriculture</a>
+                        <a href="/spices/" onclick="event.stopPropagation();">Spices</a>
+                        <a href="/agriculture/" onclick="event.stopPropagation();">Agriculture</a>
                     </div>
                 </div>
                 <a href="/contact/" class="nav-link">Contact</a>
@@ -175,9 +175,9 @@
         <div class="footer-content">
             <div class="footer-logo">
                 <span>All Blue Ingredients</span>
-                <p>Your trusted partner in global trade since 2026</p>
+                <p>Your emerging partner in global trade</p>
                 <div class="footer-contact">
-                    <p><i class="fas fa-phone"></i> +91 84829 08050</p>
+                    <p><i class="fas fa-phone"></i> +91 96653 60295</p>
                     <p><i class="fas fa-envelope"></i> info@allblueingredients.com</p>
                 </div>
             </div>
@@ -185,24 +185,22 @@
                 <h4>Quick Links</h4>
                 <a href="/">Home</a>
                 <a href="/about/">About Us</a>
-                <a href="/spices/">Spices</a>
-                <a href="/agriculture/">Agriculture</a>
+                <a href="/products/">Products</a>
                 <a href="/contact/">Contact</a>
+                <a href="/privacy-policy/">Privacy Policy</a>
             </div>
             <div class="footer-links">
                 <h4>Products</h4>
-                <a href="/product-turmeric/">Turmeric</a>
-                <a href="/product-chilli/">Red Chilli</a>
-                <a href="/wheat/">Wheat</a>
-                <a href="/rice/">Rice</a>
+                <a href="/spices/">Spices</a>
+                <a href="/agriculture/">Agriculture</a>
             </div>
             <div class="footer-social">
                 <h4>Follow Us</h4>
                 <div class="social-icons">
-                    <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="https://www.facebook.com/profile.php?id=61577675353918" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-                    <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/company/all-blue-ingredients/home" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=61577675353918" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/allblueingredients/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
         </div>
@@ -210,6 +208,51 @@
             <p>© 2026 All Blue Ingredients (ABI). All Rights Reserved.</p>
         </div>
     </footer>
+
+    <!-- Dropdown Fix Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdowns = document.querySelectorAll('.dropdown');
+            
+            dropdowns.forEach(function(dropdown) {
+                const dropdownContent = dropdown.querySelector('.dropdown-content');
+                const dropbtn = dropdown.querySelector('.dropbtn');
+                
+                if (dropdownContent && dropbtn) {
+                    dropbtn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        const isVisible = dropdownContent.style.display === 'block';
+                        
+                        // Close all other dropdowns
+                        document.querySelectorAll('.dropdown-content').forEach(function(dc) {
+                            dc.style.display = 'none';
+                        });
+                        
+                        dropdownContent.style.display = isVisible ? 'none' : 'block';
+                    });
+                }
+            });
+
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.dropdown')) {
+                    document.querySelectorAll('.dropdown-content').forEach(function(dc) {
+                        dc.style.display = 'none';
+                    });
+                }
+            });
+
+            // Close dropdown when clicking a link inside
+            document.querySelectorAll('.dropdown-content a').forEach(function(link) {
+                link.addEventListener('click', function() {
+                    document.querySelectorAll('.dropdown-content').forEach(function(dc) {
+                        dc.style.display = 'none';
+                    });
+                });
+            });
+        });
+    </script>
 
 </body>
 

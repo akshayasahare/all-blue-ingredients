@@ -27,9 +27,9 @@
                 <div class="dropdown">
                     <a href="/about/" class="nav-link dropbtn">About <i class="fas fa-chevron-down"></i></a>
                     <div class="dropdown-content">
-                        <a href="/about/#company">Company Profile</a>
-                        <a href="/about/#founder">Founder</a>
-                        <a href="/about/#team">Our Team</a>
+                        <a href="/about/#company" onclick="event.stopPropagation();">Company Profile</a>
+                        <a href="/about/#founder" onclick="event.stopPropagation();">Founder</a>
+                        <a href="/about/#team" onclick="event.stopPropagation();">Our Team</a>
                     </div>
                 </div>
                 <a href="/products/" class="nav-link active">Products</a>
@@ -349,7 +349,7 @@
                     </div>
                     <h3>Agricultural Products</h3>
                     <p>Explore our range of organic food grains and agricultural commodities.</p>
-                    <a href="/products/#agriculture">View Products →</a>
+                    <a href="/agriculture/">View Products →</a>
                 </div>
             </div>
         </div>
@@ -360,9 +360,9 @@
         <div class="footer-content">
             <div class="footer-logo">
                 <span>All Blue Ingredients</span>
-                <p>Your trusted partner in global trade since 2026</p>
+                <p>Your emerging partner in global trade</p>
                 <div class="footer-contact">
-                    <p><i class="fas fa-phone"></i> +91 84829 08050</p>
+                    <p><i class="fas fa-phone"></i> +91 96653 60295</p>
                     <p><i class="fas fa-envelope"></i> info@allblueingredients.com</p>
                 </div>
             </div>
@@ -372,19 +372,19 @@
                 <a href="/about/">About Us</a>
                 <a href="/products/">Products</a>
                 <a href="/contact/">Contact</a>
+                <a href="/privacy-policy/">Privacy Policy</a>
             </div>
             <div class="footer-links">
-                <h4>Our Products</h4>
-                <a href="/products/#spices">Spices & Herbs</a>
-                <a href="/product-turmeric/">Turmeric</a>
-                <a href="product-chili.html">Red Chilli</a>
+                <h4>Products</h4>
+                <a href="/spices/">Spices</a>
+                <a href="/agriculture/">Agriculture</a>
             </div>
             <div class="footer-social">
                 <h4>Follow Us</h4>
                 <div class="social-icons">
-                    <a href="#" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.linkedin.com/company/all-blue-ingredients/home" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                     <a href="https://www.facebook.com/profile.php?id=61577675353918" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.instagram.com/allblueingredients/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
         </div>
@@ -392,6 +392,37 @@
             <p>© 2026 All Blue Ingredients (ABI). All Rights Reserved.</p>
         </div>
     </footer>
+
+    <!-- Dropdown Fix Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdown = document.querySelector('.dropdown');
+            const dropdownContent = document.querySelector('.dropdown-content');
+            const dropbtn = document.querySelector('.dropbtn');
+            
+            if (dropdown && dropdownContent && dropbtn) {
+                dropbtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const isVisible = dropdownContent.style.display === 'block';
+                    dropdownContent.style.display = isVisible ? 'none' : 'block';
+                });
+                
+                document.addEventListener('click', function(e) {
+                    if (!dropdown.contains(e.target)) {
+                        dropdownContent.style.display = 'none';
+                    }
+                });
+                
+                dropdownContent.querySelectorAll('a').forEach(function(link) {
+                    link.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        dropdownContent.style.display = 'none';
+                    });
+                });
+            }
+        });
+    </script>
 
 </body>
 
