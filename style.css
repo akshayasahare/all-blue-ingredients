@@ -601,3 +601,29 @@ footer { background: #0a2a38; color: #cbd5e1; padding-top: 3rem; margin-top: 0; 
     .stat-card .stat-number, .stat-card .stat-icon { font-size: 1.3em; }
     .stat-card span:last-child { font-size: 0.7em; letter-spacing: 0.5px; }
 }
+/* ============================================
+   GOOGLE FORM EMBED
+   ============================================ */
+.google-form-wrapper {
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #ffffff;
+    border: 1px solid #e2edf2;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    margin-top: 1.5rem;
+}
+
+.google-form-wrapper iframe {
+    display: block;
+    width: 100%;
+    border: none;
+    min-height: 1577px;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .google-form-wrapper iframe {
+        min-height: 2000px; /* Taller on mobile for stacked fields */
+    }
+}
